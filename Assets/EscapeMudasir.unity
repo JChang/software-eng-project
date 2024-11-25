@@ -578,9 +578,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _followTarget: {fileID: 62357793}
   _offsetX: 0
+  _offsetY: 0
   _smoothFactor: 0.5
-  _minXLimit: -3
-  _maxXLimit: 5
 --- !u!1 &1731689209
 GameObject:
   m_ObjectHideFlags: 0
