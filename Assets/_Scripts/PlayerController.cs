@@ -1,8 +1,9 @@
 using UnityEngine;
-// test comment - srin 11/25
+
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
+    private Vector2 _moveInput;
 
     private bool _facingRight = true;
 
@@ -15,30 +16,37 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        float _horizontalMovement = Input.GetAxis("Horizontal");
-        float _verticalMovement = Input.GetAxis("Vertical");
-        Vector2 _directionX = (Vector2.right * _horizontalMovement);
-        Vector2 _directionY = (Vector2.up * _verticalMovement);
+        // Get input
+        _moveInput.x = Input.GetAxis("Horizontal");
+        _moveInput.y = Input.GetAxis("Vertical");
 
-        transform.Translate(_directionX * _speed * Time.deltaTime);
-        transform.Translate(_directionY * _speed * Time.deltaTime);
+        // Calculate movement direction
+        _moveInput.Normalize();
 
-        if (_horizontalMovement > 0 && !_facingRight || _horizontalMovement < 0 && _facingRight)
+        // Apply movement
+
+        // Flip player sprite based on horizontal movement
+        if (_moveInput.x > 0 && !_facingRight || _moveInput.x < 0 && _facingRight)
         {
             Flip();
         }
     }
 
+    private void FixedUpdate()
+    {
+        rb.velocity = _moveInput * _speed;
+    }
+
     void Flip()
     {
-        Vector2 currentScale = gameObject.transform.localScale;
+        Vector2 currentScale = transform.localScale;
         currentScale.x *= -1;
-        gameObject.transform.localScale = currentScale;
+        transform.localScale = currentScale;
 
         _facingRight = !_facingRight;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
 
     }
