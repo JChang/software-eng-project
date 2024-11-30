@@ -29,7 +29,11 @@ public class DebugActions : MonoBehaviour
     /// </summary>
     public void ReloadScene()
     {
+        int score = GameManager.Instance.Score;
+        int health = GameManager.Instance.Health;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        Debug.Log($"Scene reloaded. Health: {health}, score: {score}");
     }
 
     /// <summary>
