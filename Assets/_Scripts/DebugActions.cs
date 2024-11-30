@@ -16,13 +16,11 @@ public class DebugActions : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.H))
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
-            {
-                AddHealth();
-            }
-            else {
-                AddHealth(-1);
-            }
+            AddHealth(1);
+        }
+        else if (Input.GetKeyUp(KeyCode.Y)) 
+        {
+            AddHealth(-1);
         }
     }
 
@@ -47,7 +45,7 @@ public class DebugActions : MonoBehaviour
     ///     Increase/decrease the health of the player.
     /// </summary>
     /// <param name="amount">The amount of health to add. Supports negative values.</param>
-    public void AddHealth(int amount = 3)
+    public void AddHealth(int amount = 1)
     {
         GameManager.Instance.DecreaseHealth(-amount);
     }
