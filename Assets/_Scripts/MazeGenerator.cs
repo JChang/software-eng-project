@@ -62,11 +62,11 @@ public class MazeGenerator : MonoBehaviour
         int x = Mathf.RoundToInt(currCell.transform.position.x / 3f);
         int y = Mathf.RoundToInt(currCell.transform.position.y / 3f);
 
-        if (x+1 < _mazeWidth)
+        if (x + 1 < _mazeWidth)
         {
             var cellToRight = _mazeGrid[x + 1, y];
 
-            if(cellToRight.IsVisited == false)
+            if (cellToRight.IsVisited == false)
             {
                 yield return cellToRight;
             }

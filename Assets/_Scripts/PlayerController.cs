@@ -23,9 +23,7 @@ public class PlayerController : MonoBehaviour
         // Calculate movement direction
         _moveInput.Normalize();
 
-        // Apply movement
-
-        // Flip player sprite based on horizontal movement
+        // Flip player sprite to match horizontal movement
         if (_moveInput.x > 0 && !_facingRight || _moveInput.x < 0 && _facingRight)
         {
             Flip();
@@ -34,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // apply movement based on calculated user input
         rb.velocity = _moveInput * _speed;
     }
 
