@@ -4,15 +4,50 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GameManager Instance;
+
+    public int Score = 0;
+    public int Health = 3;
+
+    public UIManager UIManager;
+    public CoinSpawner CoinSpawner;
+
+    private void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        UIManager.UpdateHealth(Health);
+        UIManager.UpdateScore(Score);
+
+        StartCoroutine(SpawnCoinsAfterDelay());
+    }
+
+    IEnumerator SpawnCoinsAfterDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        CoinSpawner.SpawnCoins(Score);
+    }
+
+    public void AddScore(int amount)
+    {
+        Score += amount;
+        UIManager.UpdateScore(Score);
+    }
+
+    public void DecreaseHealth(int amount)
+    {
+        Health -= amount;
+        UIManager.UpdateHealth(Health);
     }
 }

@@ -7,13 +7,18 @@ public class MazeGenerator : MonoBehaviour
 {
     [SerializeField] private MazeCell _mazeCellPrefab;
 
-    [SerializeField] private int _mazeWidth;
-    [SerializeField] private int _mazeLength;
+    public int _mazeWidth;
+    public int _mazeLength;
 
-    private MazeCell[,] _mazeGrid;
+    public MazeCell[,] _mazeGrid;
+
+    [SerializeField] private GameManager gameManager;
 
     IEnumerator Start()
     {
+        _mazeLength = _mazeLength + Mathf.FloorToInt(gameManager.Score / 10);
+        _mazeWidth = _mazeWidth + Mathf.FloorToInt(gameManager.Score / 10);
+
         _mazeGrid = new MazeCell[_mazeWidth, _mazeLength];
 
         float cellWidth = 3f;
@@ -62,11 +67,11 @@ public class MazeGenerator : MonoBehaviour
         int x = Mathf.RoundToInt(currCell.transform.position.x / 3f);
         int y = Mathf.RoundToInt(currCell.transform.position.y / 3f);
 
-        if (x+1 < _mazeWidth)
+        if (x + 1 < _mazeWidth)
         {
             var cellToRight = _mazeGrid[x + 1, y];
 
-            if(cellToRight.IsVisited == false)
+            if (cellToRight.IsVisited == false)
             {
                 yield return cellToRight;
             }
@@ -105,12 +110,12 @@ public class MazeGenerator : MonoBehaviour
 
     private void ClearWalls(MazeCell prevCell, MazeCell currCell)
     {
-        if(prevCell == null)
+        if (prevCell == null)
         {
             return;
         }
 
-        if(prevCell.transform.position.x < currCell.transform.position.x)
+        if (prevCell.transform.position.x < currCell.transform.position.x)
         {
             prevCell.ClearRightWall();
             currCell.ClearLeftWall();
