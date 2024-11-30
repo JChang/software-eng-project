@@ -1,10 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DebugActions : MonoBehaviour
 {
+
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.T))
+        {
+            AddScore();
+        }
+        else if (Input.GetKeyUp(KeyCode.R))
+        {
+            ReloadScene();
+        }
+        else if (Input.GetKeyUp(KeyCode.H))
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+            {
+                AddHealth();
+            }
+            else {
+                AddHealth(-1);
+            }
+        }
+    }
+
     /// <summary>
     ///     Reload the current scene. Useful for testing new maze generation
     /// </summary>
