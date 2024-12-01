@@ -13,7 +13,7 @@ public class MazeGenerator : MonoBehaviour
 
     public MazeCell[,] _mazeGrid;
 
-    [SerializeField] private int _scaleFactor;
+    [SerializeField] private int _scaleFactor = 25;
 
     void OnEnable()
     {
