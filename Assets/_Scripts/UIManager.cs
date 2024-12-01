@@ -31,4 +31,9 @@ public class UIManager : MonoBehaviour
     {
         HealthText.text = "Health: " + health;
     }
+
+    public void ClearStats() {
+        HealthText.text = "";
+        ScoreText.text = "";
+    }
 }
