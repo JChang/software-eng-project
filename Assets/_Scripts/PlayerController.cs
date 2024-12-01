@@ -6,8 +6,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveInput;
 
     private bool _facingRight = true;
+    private bool _isInvincible = false;
+    [SerializeField] private float _invincibilityDuration = 3f;
+    private float _invincibilityTimer = 0f;
 
     private Rigidbody2D rb;
+    [SerializeField] private GameManager GameManager;
 
     void Start()
     {
@@ -16,19 +20,24 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Get input
         _moveInput.x = Input.GetAxis("Horizontal");
         _moveInput.y = Input.GetAxis("Vertical");
 
-        // Calculate movement direction
         _moveInput.Normalize();
 
-        // Apply movement
-
-        // Flip player sprite based on horizontal movement
         if (_moveInput.x > 0 && !_facingRight || _moveInput.x < 0 && _facingRight)
         {
             Flip();
+        }
+
+        if (_isInvincible)
+        {
+            _invincibilityTimer -= Time.deltaTime;
+
+            if (_invincibilityTimer <= 0f)
+            {
+                _isInvincible = false;
+            }
         }
     }
 
@@ -48,11 +57,21 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        if (collision.collider.CompareTag("Enemy") && !_isInvincible)
+        {
+            GameManager.DecreaseHealth(1);
+            _isInvincible = true;
+            _invincibilityTimer = _invincibilityDuration;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if (collision.CompareTag("Enemy") && !_isInvincible)
+        {
+            GameManager.DecreaseHealth(1);
+            _isInvincible = true;
+            _invincibilityTimer = _invincibilityDuration;
+        }
     }
 }

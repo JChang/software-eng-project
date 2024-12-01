@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -11,6 +10,9 @@ public class GameManager : MonoBehaviour
 
     public UIManager UIManager;
     public CoinSpawner CoinSpawner;
+    public EnemySpawner EnemySpawner;
+
+    [SerializeField] private int spawnRate;
 
     private void Awake()
     {
@@ -23,6 +25,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        UIManager = FindObjectOfType<UIManager>();
+        CoinSpawner = FindObjectOfType<CoinSpawner>();
+        EnemySpawner = FindObjectOfType<EnemySpawner>();
+
         UIManager.UpdateHealth(Health);
         UIManager.UpdateScore(Score);
 
@@ -39,6 +45,12 @@ public class GameManager : MonoBehaviour
     {
         Score += amount;
         UIManager.UpdateScore(Score);
+
+        /*while (Score >= spawnRate)
+        {
+            SpawnEnemy();
+            spawnRate += (int)((spawnRate ^ 2) * 0.5);
+        }*/
     }
 
     public void DecreaseHealth(int amount)
@@ -46,4 +58,9 @@ public class GameManager : MonoBehaviour
         Health -= amount;
         UIManager.UpdateHealth(Health);
     }
+
+    /*private void SpawnEnemy()
+    {
+        EnemySpawner.SpawnRandomEnemy();
+    }*/
 }

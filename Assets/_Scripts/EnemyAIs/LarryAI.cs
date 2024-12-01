@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class LarryAI : MonoBehaviour
 {
-    [SerializeField] private float dashSpeed = 10f;
-    [SerializeField] private float dashDistance = 5f;
-    [SerializeField] private float pauseTime = 2f;
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashDistance;
+    [SerializeField] private float pauseTime;
+    [SerializeField] private float _difficultyScaler;
 
     [SerializeField] private Transform playerTransform;
+    [SerializeField] private GameManager gameManager;
+
     private Rigidbody2D rb;
     private bool isDashing = false;
     private float dashTimer = 0f;
@@ -15,6 +18,9 @@ public class LarryAI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = player.transform;
+        gameManager = FindObjectOfType<GameManager>();
         pauseTimer = pauseTime;
     }
 
@@ -30,6 +36,7 @@ public class LarryAI : MonoBehaviour
                 Vector2 direction = (playerTransform.position - transform.position).normalized;
                 rb.velocity = direction * dashSpeed;
             }
+            dashSpeed = dashSpeed + (float)(gameManager.Score * _difficultyScaler);
         }
         else
         {

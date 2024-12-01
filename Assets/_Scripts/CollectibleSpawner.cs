@@ -28,8 +28,6 @@ public class CoinSpawner : MonoBehaviour
         int randomY = Random.Range(0, MazeGenerator._mazeLength);
         MazeCell randomCell = MazeGenerator._mazeGrid[randomX, randomY];
 
-        Vector2 cellCenter = randomCell.transform.position;
-
-        return cellCenter;
+        return randomCell.transform.position;
     }
 }
