@@ -47,17 +47,14 @@ public class PlayerController : MonoBehaviour
             Flip();
         }
 
-        if (touchingCreature() && iframes == 0){
-            GameManager.Instance.DecreaseHealth(1);
-            iframes = 1000;
-        }
+        if (_isInvincible)
+        {
+            _invincibilityTimer -= Time.deltaTime;
 
-        if (iframes > 0){
-            iframes--;
-            playerSprite.color = Color.red;
-        }
-        else{
-            playerSprite.color = Color.white;
+            if (_invincibilityTimer <= 0f)
+            {
+                _isInvincible = false;
+            }
         }
     }
 
