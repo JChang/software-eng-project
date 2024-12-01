@@ -30,4 +30,5 @@ public class EndGame : MonoBehaviour
     {
         Time.timeScale = 1f; 
         SceneManager.LoadScene("MainMenu"); 
+    }
 }
