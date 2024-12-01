@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MazeGenerator : MonoBehaviour
 {
@@ -12,12 +13,22 @@ public class MazeGenerator : MonoBehaviour
 
     public MazeCell[,] _mazeGrid;
 
-    [SerializeField] private GameManager gameManager;
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += resetDimensions;
+    }
+
+    private void resetDimensions(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        _mazeLength = _mazeLength + Mathf.FloorToInt(GameManager.Instance.Score / 10);
+        _mazeWidth = _mazeWidth + Mathf.FloorToInt(GameManager.Instance.Score / 10);
+        Debug.Log($"maze length: {_mazeLength}, score {GameManager.Instance.Score}");
+    }
 
     IEnumerator Start()
     {
-        _mazeLength = _mazeLength + Mathf.FloorToInt(gameManager.Score / 10);
-        _mazeWidth = _mazeWidth + Mathf.FloorToInt(gameManager.Score / 10);
+        _mazeLength = _mazeLength + Mathf.FloorToInt(GameManager.Instance.Score / 10);
+        _mazeWidth = _mazeWidth + Mathf.FloorToInt(GameManager.Instance.Score / 10);
 
         _mazeGrid = new MazeCell[_mazeWidth, _mazeLength];
 
