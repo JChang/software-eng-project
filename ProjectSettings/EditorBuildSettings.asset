@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/StartMenu.unity
+    path: Assets/Scenes/TitleScene.unity
     guid: 6b7d8bc77a4c05743bb744af5ef3c58a
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/LostLarry.unity
     guid: 87a3d983d6b09d849942ec387d960b52
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: 97b6c27561cb4da4d9954dc5d1b050d6
   m_configObjects: {}
