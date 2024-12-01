@@ -3,32 +3,25 @@ using UnityEngine.SceneManagement;
 
 public class EndGame : MonoBehaviour
 {
-    public GameObject endGameScreen; 
-    private bool isGameOver = false;
+    public static GameObject endGameScreen; 
+    private static bool _isGameOver = false;
 
-    void Update()
+    public static void TriggerEndGame()
     {
-        if (!isGameOver && GameManager.Instance.Health <= 0)
-        {
-            TriggerEndGame();
-        }
+        _isGameOver = true;
+        GameManager.Instance.Health = GameManager.DEFAULT_HEALTH;
+        GameManager.Instance.Score = 0;
+        SceneManager.LoadScene("GameOverScene");
+        UIManager.Instance.ClearStats();
     }
-
-    private void TriggerEndGame()
-    {
-        isGameOver = true;
-        endGameScreen.SetActive(true); 
-        Time.timeScale = 0f; 
 
     public void RestartGame()
     {
-        Time.timeScale = 1f; 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+        SceneManager.LoadScene("LostLarry"); 
     }
 
     public void ExitToMainMenu()
     {
-        Time.timeScale = 1f; 
-        SceneManager.LoadScene("MainMenu"); 
+        SceneManager.LoadScene("TitleScene"); 
     }
 }

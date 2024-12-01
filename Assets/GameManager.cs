@@ -4,10 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
+    public const int DEFAULT_HEALTH = 3;
     public static GameManager Instance;
 
     public int Score = 0;
-    public int Health = 3;
+    private int _health = DEFAULT_HEALTH;
+
+    public int Health {
+        get {
+            return _health;
+        }
+        set {
+            _health = value;
+            if (value <= 0) {
+                EndGame.TriggerEndGame();
+            }
+        }
+    }
 
     public UIManager UIManager;
     public CoinSpawner CoinSpawner;
