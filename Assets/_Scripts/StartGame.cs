@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
-
-    public string LevelName;
-
-    public void LoadLevel()
+    public void OnPlayButton() 
     {
-        SceneManager.LoadScene(LevelName);
+        SceneManager.LoadScene("LostLarry");
+    }
+
+    public void OnQuitButton() 
+    {
+        Application.Quit();
     }
 }
