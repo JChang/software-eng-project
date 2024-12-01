@@ -11,18 +11,6 @@ public class FollowCam : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void LateUpdate()
     {
         Vector3 _targetPosition = new Vector3(_followTarget.position.x + _offsetX, 
