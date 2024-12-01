@@ -13,6 +13,8 @@ public class MazeGenerator : MonoBehaviour
 
     public MazeCell[,] _mazeGrid;
 
+    [SerializeField] private int _scaleFactor = 25;
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += resetDimensions;
@@ -20,15 +22,15 @@ public class MazeGenerator : MonoBehaviour
 
     private void resetDimensions(Scene scene, LoadSceneMode loadSceneMode)
     {
-        _mazeLength = _mazeLength + Mathf.FloorToInt(GameManager.Instance.Score / 10);
-        _mazeWidth = _mazeWidth + Mathf.FloorToInt(GameManager.Instance.Score / 10);
+        _mazeLength = _mazeLength + Mathf.FloorToInt(GameManager.Instance.Score / _scaleFactor);
+        _mazeWidth = _mazeWidth + Mathf.FloorToInt(GameManager.Instance.Score / _scaleFactor);
         Debug.Log($"maze length: {_mazeLength}, score {GameManager.Instance.Score}");
     }
 
     IEnumerator Start()
     {
-        _mazeLength = _mazeLength + Mathf.FloorToInt(GameManager.Instance.Score / 10);
-        _mazeWidth = _mazeWidth + Mathf.FloorToInt(GameManager.Instance.Score / 10);
+        _mazeLength = _mazeLength + Mathf.FloorToInt(GameManager.Instance.Score / _scaleFactor);
+        _mazeWidth = _mazeWidth + Mathf.FloorToInt(GameManager.Instance.Score / _scaleFactor);
 
         _mazeGrid = new MazeCell[_mazeWidth, _mazeLength];
 
