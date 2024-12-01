@@ -31,7 +31,7 @@ public class DebugActions : MonoBehaviour
     {
         int score = GameManager.Instance.Score;
         int health = GameManager.Instance.Health;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         Debug.Log($"Scene reloaded. Health: {health}, score: {score}");
     }

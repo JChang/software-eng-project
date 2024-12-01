@@ -34,8 +34,8 @@ public class MazeGenerator : MonoBehaviour
 
         _mazeGrid = new MazeCell[_mazeWidth, _mazeLength];
 
-        float cellWidth = 3f;
-        float cellLength = 3f;
+        float cellWidth = 5f;
+        float cellLength = 5f;
 
         for (int x = 0; x < _mazeWidth; x++)
         {
@@ -77,8 +77,8 @@ public class MazeGenerator : MonoBehaviour
 
     private IEnumerable<MazeCell> GetUnvisitedCells(MazeCell currCell)
     {
-        int x = Mathf.RoundToInt(currCell.transform.position.x / 3f);
-        int y = Mathf.RoundToInt(currCell.transform.position.y / 3f);
+        int x = Mathf.RoundToInt(currCell.transform.position.x / 5f);
+        int y = Mathf.RoundToInt(currCell.transform.position.y / 5f);
 
         if (x + 1 < _mazeWidth)
         {
