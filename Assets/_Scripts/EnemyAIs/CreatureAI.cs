@@ -23,10 +23,4 @@ public class CreatureAI : MonoBehaviour
         float speed = Mathf.Lerp(minSpeed, maxSpeed, Mathf.InverseLerp(minChaseDistance, maxChaseDistance, distance));
         rb.velocity = direction * speed;
     }
-
-    // private void OnTriggerEnter2D(Collider2D c){
-    //     if (c.gameObject.tag == "Player"){
-    //         GameManager.Instance.DecreaseHealth(1);
-    //     }
-    // }
 }
