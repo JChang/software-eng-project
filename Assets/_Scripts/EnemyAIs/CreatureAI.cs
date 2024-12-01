@@ -31,4 +31,10 @@ public class CreatureAI : MonoBehaviour
         _maxSpeed = _maxSpeed + (float)(_difficultyScaler * gameManager.Score)/2;
         _minSpeed = _minSpeed + (float)(_difficultyScaler * gameManager.Score)/2;
     }
+
+    // private void OnTriggerEnter2D(Collider2D c){
+    //     if (c.gameObject.tag == "Player"){
+    //         GameManager.Instance.DecreaseHealth(1);
+    //     }
+    // }
 }
