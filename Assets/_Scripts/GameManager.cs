@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public const int DEFAULT_HEALTH = 3;
+    public const int DEFAULT_HEALTH = 7;
     public static GameManager Instance;
 
     public int Score = 0;
