@@ -45,7 +45,7 @@ public class ItemSpawner : MonoBehaviour
 
     void TrySpawnTeleporter()
     {
-        if (Random.value <= 0.5f)
+        if (Random.value <= 0.75f)
         {
             SpawnTeleporter();
         }
