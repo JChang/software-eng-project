@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 6877895476380554240}
   - component: {fileID: 7605966099442869187}
   - component: {fileID: 5497359273804827519}
-  - component: {fileID: 7844783020061050489}
   m_Layer: 0
   m_Name: James
   m_TagString: Enemy
@@ -189,7 +188,7 @@ MonoBehaviour:
   dashSpeed: 8
   dashDistance: 10
   pauseTime: 2
-  _difficultyScaler: 0.005
+  _difficultyScaler: 0.00001
   playerTransform: {fileID: 0}
   lightTransform: {fileID: 0}
   lightCollider: {fileID: 0}
@@ -266,16 +265,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7844783020061050489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1934600591577604895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f3a97ecf04f1f24983baf1aa412dd14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectID: 
