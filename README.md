@@ -1,8 +1,7 @@
-# Escape (Mudasir) Obby
+# Lost Larry
 
 Software Engineering Elective, Trimester 1 Final Project
 
+Created by: Mudasir Ali, Christopher "Jin" Chang, Connor Landzettel, and Srinidhaya Vempati
 
-Created by: Jin Chang, Mudasir Ali, Connor Landzettel, Srinidhaya Vempati
-
-
+A maze game built with Unity that focuses on collecting coins and avoiding various enemies.
