@@ -65,11 +65,8 @@ public class JamesAI : MonoBehaviour
             Vector2 directionToPlayer = (playerTransform.position - transform.position).normalized;
             rb.velocity = directionToPlayer * dashSpeed;
         }
-        if (moveSpeed < 15)
-        {
-            moveSpeed = moveSpeed + (float)(_difficultyScaler * gameManager.Score);
-            dashSpeed = moveSpeed + (float)(_difficultyScaler * gameManager.Score);
-        }
+        moveSpeed = moveSpeed + (float)(_difficultyScaler * gameManager.Score);
+        dashSpeed = moveSpeed + (float)(_difficultyScaler * gameManager.Score);
     }
 
     private void HandleDashing()

@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 4990145836645896106}
   - component: {fileID: 2461231255379542980}
   - component: {fileID: 2271122903479446394}
-  - component: {fileID: 873825947839812099}
   m_Layer: 0
   m_Name: TheCreature
   m_TagString: Enemy
@@ -189,7 +188,7 @@ MonoBehaviour:
   _minSpeed: 1
   _maxChaseDistance: 10
   _minChaseDistance: 5
-  _difficultyScaler: 0.001
+  _difficultyScaler: 1e-19
   playerTransform: {fileID: 0}
   gameManager: {fileID: 0}
 --- !u!50 &2461231255379542980
@@ -264,16 +263,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &873825947839812099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4957167348998120432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f3a97ecf04f1f24983baf1aa412dd14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectID: 

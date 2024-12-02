@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -41,7 +42,6 @@ public class PlayerController : MonoBehaviour
 
         _moveInput.Normalize();
 
-        // Flip player sprite to match horizontal movement
         if (_moveInput.x > 0 && !_facingRight || _moveInput.x < 0 && _facingRight)
         {
             Flip();
@@ -60,7 +60,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // apply movement based on calculated user input
         rb.velocity = _moveInput * _speed;
     }
 
@@ -93,6 +92,11 @@ public class PlayerController : MonoBehaviour
             _isInvincible = true;
             _invincibilityTimer = _invincibilityDuration;
         }
+
+        if (collision.collider.CompareTag("Goal"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -102,6 +106,11 @@ public class PlayerController : MonoBehaviour
             GameManager.DecreaseHealth(1);
             _isInvincible = true;
             _invincibilityTimer = _invincibilityDuration;
+        }
+
+        if (collision.CompareTag("Goal"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

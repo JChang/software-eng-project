@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    public const int DEFAULT_HEALTH = 3;
+    public const int DEFAULT_HEALTH = 6;
     public static GameManager Instance;
 
     public int Score = 0;
@@ -23,10 +22,10 @@ public class GameManager : MonoBehaviour
     }
 
     public UIManager UIManager;
-    public CoinSpawner CoinSpawner;
+    public ItemSpawner ItemSpawner;
     public EnemySpawner EnemySpawner;
 
-    [SerializeField] private int spawnRate;
+    // [SerializeField] private int _spawnRate;
 
     private void Awake()
     {
@@ -40,7 +39,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UIManager = FindObjectOfType<UIManager>();
-        CoinSpawner = FindObjectOfType<CoinSpawner>();
+        ItemSpawner = FindObjectOfType<ItemSpawner>();
         EnemySpawner = FindObjectOfType<EnemySpawner>();
 
         UIManager.UpdateHealth(Health);
@@ -52,7 +51,7 @@ public class GameManager : MonoBehaviour
     IEnumerator SpawnCoinsAfterDelay()
     {
         yield return new WaitForSeconds(0.1f);
-        CoinSpawner.SpawnCoins(Score);
+        ItemSpawner.SpawnCoins(Score);
     }
 
     public void AddScore(int amount)
