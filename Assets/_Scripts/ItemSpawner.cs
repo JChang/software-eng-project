@@ -45,7 +45,7 @@ public class ItemSpawner : MonoBehaviour
 
     void TrySpawnTeleporter()
     {
-        if (Random.value <= 0.75f)
+        if (Random.value <= 0.75f && GameManager.Instance.Score > 0)
         {
             SpawnTeleporter();
         }
